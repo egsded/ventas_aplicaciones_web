@@ -1,0 +1,81 @@
+<ng-template #content let-modal>
+  <div class="modal-header" style="background-color: black; color:white">
+    <h4 class="modal-title" id="modal-basic-title" *ngIf="login">Login Here</h4>
+    <h4 class="modal-title" id="modal-basic-title" *ngIf="!login">Logup Here</h4>
+    <button type="button" class="btn btn-outline-danger close" aria-label="Close" (click)="modal.dismiss('Cross click'); onClose()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="background-color: black; color:white">
+    <form  [formGroup]="formLogin" id="form" *ngIf="login">
+      <div class="form-group row">
+      	<label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+      	<div class="col-sm-10">
+      		<input type="email" name="email" class="form-control bg-transparent" style="color:white" id="inputEmail3" placeholder="Email" formControlName="email" required>
+      	</div>
+      </div>
+      <div class="form-group row mt-3">
+      	<label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+      	<div class="col-sm-10">
+      		<input type="Password" name="password" class="form-control bg-transparent" style="color:white" id="inputPassword3" placeholder="Password" formControlName="password" required>
+      	</div>
+      </div>
+    </form>
+    <form [formGroup]="formLogup" id="form2" *ngIf="!login">
+    	<div class="form-group row">
+    		<label for="inputName3" class="col-sm-2 col-form-label">Name</label>
+    		<div class="col-sm-10">
+    			<input type="text" name="name" class="form-control bg-transparent" style="color:white" id="inputName3" placeholder="Name" formControlName="name">
+    		</div>
+    	</div>
+    	<div class="form-group row mt-3">
+    		<label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+    		<div class="col-sm-10">
+    			<input type="email" name="email" class="form-control bg-transparent" style="color:white" id="inputEmail3" placeholder="Email" formControlName="email">
+    		</div>
+    	</div>
+    	<div class="form-group row mt-3">
+    		<label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+    		<div class="col-sm-10">
+    			<input type="Password" name="password" class="form-control bg-transparent" style="color:white" id="inputPassword3" placeholder="Password" formControlName="password">
+    		</div>
+    	</div>
+    </form>
+  </div>
+  <div class="modal-footer" style="background-color: black; color:white">
+    <button type="submit" class="btn btn-outline-primary" (click)="onSubmit(); modal.close('Save click')" *ngIf="login">Sign in</button>
+    <button class="btn btn-outline-success" (click)="onlogup()"  *ngIf="login">Sign up</button>
+    <button type="submit" class="btn btn-outline-primary" (click)="onSubmit2(); modal.dismiss('Cross click')" *ngIf="!login">Log up</button>
+  </div>
+</ng-template>
+<nav class="navbar navbar-light bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/" style="color: white;"><b>Spamers</b></a>
+    <div>
+      <li class="nav-item dropdown">
+          <a class="navbar-brand" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+    </div>
+    <div>
+	    <a class="navbar-brand" routerLink="" style="color: white" *ngIf="!htoken" (click)="open(content)">Login</a>
+	    <a class="navbar-brand" routerLink="" style="color: white" *ngIf="htoken" (click)="prueba()">Profile</a>
+      <a class="navbar-brand" routerLink="" style="color: white" *ngIf="htoken" (click)="onLogout()">Log out</a>
+    </div>
+  </div>
+</nav>
+
+<ngb-alert [dismissible]="false" type="success" *ngIf="!login && saved">
+  <strong>Success!</strong> El usuario se a registrado correctamente.
+</ngb-alert>
+
+<ngb-alert [dismissible]="false" type="danger" *ngIf="error">
+  <strong>Error!</strong> {{error}}
+</ngb-alert>
