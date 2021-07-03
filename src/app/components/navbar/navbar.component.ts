@@ -29,7 +29,8 @@ export class NavbarComponent implements OnInit {
   formLogup = new FormGroup({
     name:new FormControl('',Validators.required),
     email:new FormControl('',Validators.required),
-    password:new FormControl('',Validators.required)
+    password:new FormControl('',Validators.required),
+    confirm: new FormControl('', Validators.required)
   });
 
   constructor(private modalService: NgbModal, private http:HttpClient, public _userService:UserService, public _peopleService:PeopleService) { }
@@ -94,8 +95,15 @@ export class NavbarComponent implements OnInit {
   }
 
   onSubmit2(){
+    if(this.formLogup.value.password == this.formLogup.value.confirm){
+      this.newUser();
+    }else{
+      this.onError("the password isn't the same");
+    }
+  }
+
+  newUser(){
     return this._userService.regist(this.formLogup.value).subscribe(data=>{
-      console.log(data);
       this.saved = true;
       let currentdate = new Date();
       countdown(currentdate, (ts:any)=>{
