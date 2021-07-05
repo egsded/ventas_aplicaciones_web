@@ -59,7 +59,7 @@
     <a class="navbar-brand" routerLink="/" style="color: white;"><b>Spamers</b></a>
     <div>
 	    <a class="navbar-brand" routerLink="" style="color: white" *ngIf="!htoken" (click)="open(content)">Login</a>
-	    <a class="navbar-brand" routerLink="" style="color: white" *ngIf="htoken" (click)="prueba()">Profile</a>
+	    <a class="navbar-brand" routerLink="" style="color: white" *ngIf="htoken">Profile</a>
       <a class="navbar-brand" routerLink="" style="color: white" *ngIf="htoken" (click)="onLogout()">Log out</a>
     </div>
   </div>

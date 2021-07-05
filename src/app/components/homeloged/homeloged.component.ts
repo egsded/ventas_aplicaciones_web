@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProgramersService } from '../../services/programer/programers.service';
 
 @Component({
   selector: 'app-homeloged',
@@ -7,14 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomelogedComponent implements OnInit {
 	loged = false;
+  githubuser= false;
 
-  constructor() { }
+  constructor(public _programerService:ProgramersService) { }
 
   ngOnInit(): void {
   	if(localStorage.token){
   		this.loged = true;
-  	}else{
-  		this.loged = false;
+      this._programerService.getProgramer(localStorage.user_id).subscribe((data:any)=>{
+        if(data.length<1){
+          this.githubuser = true;
+        }
+      });
   	}
   }
 

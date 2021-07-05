@@ -59,16 +59,7 @@ export class NavbarComponent implements OnInit {
     this._userService.login(this.formLogin.value).subscribe((data:any)=> {
       localStorage.setItem('token', data.token);
       this.onlogin();
-      this._peopleService.getPeople().subscribe(data=>{
-        console.log(data);
-      });
     }, error=>this.onError(error.error.error));
-  }
-
-  prueba(){
-    this._userService.autenticated().subscribe(data=>{
-      console.log(data);
-    }, error=>console.log(error));
   }
 
   onError(error:string){
@@ -89,6 +80,9 @@ export class NavbarComponent implements OnInit {
   onlogin(){
     if(localStorage.token){
       this.htoken = true;
+      this._userService.autenticated().subscribe((data:any) =>{
+        localStorage.setItem('user_id', data.user.id);
+      });
     } else{
       this.htoken = false;
     }
