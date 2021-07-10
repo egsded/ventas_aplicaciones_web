@@ -7,6 +7,7 @@ import { PeopleService } from '../../services/people/people.service';
 import {Subject} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
 import * as countdown from 'countdown';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -33,7 +34,7 @@ export class NavbarComponent implements OnInit {
     confirm: new FormControl('', Validators.required)
   });
 
-  constructor(private modalService: NgbModal, private http:HttpClient, public _userService:UserService, public _peopleService:PeopleService) { }
+  constructor(private modalService: NgbModal, private http:HttpClient, public _userService:UserService, public _peopleService:PeopleService, private router:Router) { }
 
   ngOnInit(): void {
     this.onlogin();
@@ -82,6 +83,7 @@ export class NavbarComponent implements OnInit {
       this.htoken = true;
       this._userService.autenticated().subscribe((data:any) =>{
         localStorage.setItem('user_id', data.user.id);
+        this.router.navigateByUrl('/inicio');
       });
     } else{
       this.htoken = false;

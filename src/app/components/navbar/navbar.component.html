@@ -49,7 +49,7 @@
     </form>
   </div>
   <div class="modal-footer" style="background-color: black; color:white">
-    <button type="submit" routerLink="inicio" class="btn btn-outline-primary" (click)="onSubmit(); modal.close('Save click')" *ngIf="login">Sign in</button>
+    <button type="submit" class="btn btn-outline-primary" (click)="onSubmit(); modal.close('Save click')" *ngIf="login">Sign in</button>
     <button class="btn btn-outline-success" (click)="onlogup()"  *ngIf="login">Sign up</button>
     <button type="submit" class="btn btn-outline-primary" (click)="onSubmit2(); modal.dismiss('Cross click')" *ngIf="!login">Log up</button>
   </div>
