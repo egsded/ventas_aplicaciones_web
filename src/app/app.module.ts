@@ -9,7 +9,8 @@ import { PeopleComponent } from './components/people/people.component';
 import { HomeComponent } from './components/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { JwtInterceptor } from './services/auth/jwt-interceptor';
-import { HomelogedComponent } from './components/homeloged/homeloged.component'
+import { HomelogedComponent } from './components/homeloged/homeloged.component';
+import { GithubComponent } from './components/github/github.component'
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HomelogedComponent } from './components/homeloged/homeloged.component'
     NavbarComponent,
     PeopleComponent,
     HomeComponent,
-    HomelogedComponent
+    HomelogedComponent,
+    GithubComponent
   ],
   imports: [
     BrowserModule,

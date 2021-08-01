@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PeopleComponent } from './components/people/people.component';
 import { HomeComponent } from './components/home/home.component';
 import { HomelogedComponent } from './components/homeloged/homeloged.component';
+import { GithubComponent } from './components/github/github.component'
 
 const routes: Routes = [
 	{
@@ -16,6 +17,10 @@ const routes: Routes = [
 	{
 		path:'inicio',
 		component:HomelogedComponent
+	},
+	{
+		path:'github',
+		component:GithubComponent
 	}
 ];
 
