@@ -18,4 +18,8 @@ export class ProgramersService {
   getProgramer(id:any){
   	return this.http.get(API_URL + '/programer/' + id);
   }
+
+  makeUser(form:any){
+    return this.http.post(API_URL + '/people/githubuser', form);
+  }
 }
