@@ -14,4 +14,16 @@ export class PeopleService {
   getPeople(){
   	return this.http.get(API_URL + '/people');
   }
+
+  createPeople(form:any){
+    return this.http.post(API_URL + '/people/create',form);
+  }
+
+  findPeople(name:any){
+    return this.http.get(API_URL + '/find/people/' + name);
+  }
+
+  deletePeople(id:any){
+    return this.http.get(API_URL + '/people/delete/' + id);
+  }
 }
