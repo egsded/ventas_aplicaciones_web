@@ -30,6 +30,7 @@ export class NavbarComponent implements OnInit {
   formLogup = new FormGroup({
     name:new FormControl('',Validators.required),
     email:new FormControl('',Validators.required),
+    whats:new FormControl('', Validators.required),
     password:new FormControl('',Validators.required),
     confirm: new FormControl('', Validators.required)
   });
@@ -100,6 +101,7 @@ export class NavbarComponent implements OnInit {
 
   newUser(){
     return this._userService.regist(this.formLogup.value).subscribe(data=>{
+      console.log(data);
       this.saved = true;
       let currentdate = new Date();
       countdown(currentdate, (ts:any)=>{

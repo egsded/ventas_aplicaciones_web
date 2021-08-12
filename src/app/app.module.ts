@@ -10,7 +10,9 @@ import { HomeComponent } from './components/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { JwtInterceptor } from './services/auth/jwt-interceptor';
 import { HomelogedComponent } from './components/homeloged/homeloged.component';
-import { GithubComponent } from './components/github/github.component'
+import { GithubComponent } from './components/github/github.component';
+import { ProgramsComponent } from './components/programs/programs.component';
+import { MakeordersComponent } from './components/makeorders/makeorders.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { GithubComponent } from './components/github/github.component'
     PeopleComponent,
     HomeComponent,
     HomelogedComponent,
-    GithubComponent
+    GithubComponent,
+    ProgramsComponent,
+    MakeordersComponent
   ],
   imports: [
     BrowserModule,

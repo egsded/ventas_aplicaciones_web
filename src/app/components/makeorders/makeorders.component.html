@@ -1,0 +1,48 @@
+<div class="mt-4" style="color:white">
+	<h3>Program's order</h3>
+	<form [formGroup]="formprogram" id="formprogram">
+		<div class="form-group row mt-5">
+			<label for="inputName" class="col-sm-2 col-form-label">Name</label>
+			<div class="col-sm-10">
+				<input type="text" name="name" class="form-control bg-transparent" style="color:white" id="inputName" placeholder="Program's Name" formControlName="name">
+			</div>
+		</div>
+		<div class="form-group row mt-4">
+			<label for="inputDescription" class="col-sm-2 col-form-label">Description</label>
+			<div class="col-sm-10">
+				<textarea class="form-control bg-transparent" id="inputDescription" rows="3" style="color:white" formControlName="description" placeholder="..."></textarea>
+			</div>
+		</div>
+		<div class="form-group row mt-4">
+			<label for="inputInstalationDate" class="col-sm-2 col-form-label">Instalation Date</label>
+			<div class="col-sm-2">
+				<input type="date" name="instalationdate" class="form-control bg-transparent" id="inputInstalationDate" formControlName="instalation_date" style="color:white">
+			</div>
+		</div>
+		<div class="form-group row mt-4">
+			<label for="inputPrice" class="col-sm-2 col-form-label">Price</label>
+			<div class="col-sm-10">
+				<input type="text" name="price" class="form-control bg-transparent" style="color:white" id="inputPrice" placeholder="0" formControlName="price">
+			</div>
+		</div>
+		<div class="form-group row mt-4">
+			<label for="inputDatabase" class="col-sm-2 col-form-label">Data base</label>
+			<div class="col-sm-10">
+				<input type="text" name="database" class="form-control bg-transparent" style="color:white" id="inputDatabase" placeholder="DB" formControlName="database">
+			</div>
+		</div>
+		<div class="form-group row mt-4">
+			<label for="inputRepository" class="col-sm-2 col-form-label">Repository</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control bg-transparent" id="inputRepository" name="repository"
+				style="color:white" placeholder="Repository name of Github" formControlName="repository">
+			</div>
+		</div>
+		<div class="form-group row mt-4">
+			<label for="inputType" class="col-sm-2 col-form-label">Type of the program</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control bg-transparent" style="color:white" id="inputType" name="type" placeholder="movil / web" formControlName="type">
+			</div>
+		</div>
+	</form>
+</div>

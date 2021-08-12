@@ -1,0 +1,28 @@
+<div class="mt-4" style="color:white">
+	<div class="row mb-5">
+		<button type="button" class="btn btn-outline-light col-sm-2">Make Order</button>
+	</div>
+	<h3>Orders</h3>
+	<table class="table table-striped">
+		<thead style="color:white">
+			<tr>
+				<th>Id</th>
+				<th>Program</th>
+				<th>Description</th>
+				<th>Client</th>
+				<th>Debt</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr style="color:white" *ngFor="let pr of proyects">
+				<td>{{pr.id}}</td>
+				<td>{{pr.name_program}}</td>
+				<td>{{pr.description_program}}</td>
+				<td>{{pr.client}}</td>
+				<td>{{pr.debt}}</td>
+				<td><button type="button" class="btn btn-outline-light">+</button></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

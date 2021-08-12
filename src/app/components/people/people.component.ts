@@ -12,7 +12,8 @@ export class PeopleComponent implements OnInit {
   closeResult = '';
 
 	form = new FormGroup({
-		name:new FormControl('',Validators.required)
+		name:new FormControl('',Validators.required),
+    whats:new FormControl('', Validators.required)
 	});
 
   filter = new FormControl('',Validators.required);
