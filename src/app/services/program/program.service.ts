@@ -13,4 +13,12 @@ export class ProgramService {
   getProyects(){
     return this.http.get(API_URL + '/programs/orders/' + localStorage.getItem('user_id'));
   }
+
+  getAllOfProyect(id:any){
+    return this.http.get(API_URL + '/programs/orders/all/' + id);
+  }
+
+  editOrder(form:any){
+    return this.http.post(API_URL + '/programs/orders/edit', form);
+  }
 }

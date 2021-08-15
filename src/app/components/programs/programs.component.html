@@ -12,6 +12,7 @@
 				<th>Client</th>
 				<th>Debt</th>
 				<th></th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -21,8 +22,154 @@
 				<td>{{pr.description_program}}</td>
 				<td>{{pr.client}}</td>
 				<td>{{pr.debt}}</td>
-				<td><button type="button" class="btn btn-outline-light">+</button></td>
+				<td><button type="button" class="btn btn-outline-light" (click)="open(pr.id, content)">+</button></td>
 			</tr>
 		</tbody>
 	</table>
 </div>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header" style="background-color: black; color:white">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="close btn btn-outline-danger" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="background-color: black; color:white">
+  	<div *ngIf="edit == false">
+	    <div class="row">
+	    	<b class="col-sm-4">ID_Proyect:</b>
+	    	<p class="col-sm-8">{{proyect.program_id}}</p>
+	    </div>
+	    <div class="row">
+	    	<b class="col-sm-4">Proyect Name:</b>
+	    	<p class="col-sm-8">{{proyect.program_name}}</p>
+	    </div>
+	    <div class="row">
+	    	<b class="col-sm-4">Description:</b>
+	    	<p class="col-sm-8">{{proyect.program_description}}</p>
+	    </div>
+	    <div class="row">
+	    	<b class="col-sm-4">Instalation Date:</b>
+	    	<p class="col-sm-8">{{proyect.instalation_date}}</p>
+	    </div>
+	    <div class="row">
+	    	<b class="col-sm-4">Price:</b>
+	    	<p class="col-sm-8">{{proyect.price}}</p>
+	    </div>
+	    <div class="row">
+	    	<b class="col-sm-4">Database:</b>
+	    	<p class="col-sm-8">{{proyect.database}}</p>
+	    </div>
+	    <div class="row">
+	    	<b class="col-sm-4">Repository:</b>
+	    	<p class="col-sm-8">{{proyect.repository}}</p>
+	    </div>
+	    <div class="row">
+	    	<b class="col-sm-4">Type of Proyect:</b>
+	    	<p class="col-sm-8">{{proyect.type}}</p>
+	    </div>
+	    <div class="row">
+	    	<b class="col-sm-4">Debt:</b>
+	    	<p class="col-sm-8">{{proyect.debt}}</p>
+	    </div>
+	    <div class="row">
+	    	<b class="col-sm-4">Order Date:</b>
+	    	<p class="col-sm-8">{{proyect.order_date}}</p>
+	    </div>
+	    <div class="row">
+	    	<b class="col-sm-4">Date Finished:</b>
+	    	<p class="col-sm-8">{{proyect.order_date_finished}}</p>
+	    </div>
+	    <div class="row">
+	    	<b class="col-sm-4">Customer Name:</b>
+	    	<p class="col-sm-8">{{proyect.customer}}</p>
+	    </div>
+	    <div class="row">
+	    	<b class="col-sm-4">Customer Whats:</b>
+	    	<p class="col-sm-8">{{proyect.whats}}</p>
+	    </div>
+  	</div>
+  	<div *ngIf="edit">
+  		<form [formGroup]="formEdit" id="formedi">
+  			<div class="form-group row mt-3">
+  				<label for="inputProyect" class="col-sm-2 col-form-label">Proyect Name:</label>
+  				<div class="col-sm-10">
+  					<input type="text" name="proyect_name" class="form-control bg-transparent" style="color:white" id="inputProyect" formControlName="proyect_name" [(ngModel)]="proyect.program_name">
+  				</div>
+  			</div>
+  			<div class="form-group row mt-3">
+  				<label for="inputDescription" class="col-sm-2 col-form-label">Proyect Description:</label>
+  				<div class="col-sm-10">
+  					<input type="text" name="proyect_description" class="form-control bg-transparent" style="color:white" id="inputDescription" formControlName="proyect_description" [(ngModel)]="proyect.program_description">
+  				</div>
+  			</div>
+  			<div class="form-group row mt-3">
+  				<label for="inputInstDate" class="col-sm-2 col-form-label">Instalation Date:</label>
+  				<div class="col-sm-10">
+  					<input type="date" name="instalation_date" class="form-control bg-transparent" style="color:white" id="inputInstDate" formControlName="instalation_date" [(ngModel)]="proyect.instalation_date">
+  				</div>
+  			</div>
+  			<div class="form-group row mt-3">
+  				<label for="inputPrice" class="col-sm-2 col-form-label">Price:</label>
+  				<div class="col-sm-10">
+  					<input type="text" name="price" class="form-control bg-transparent" style="color:white" id="inputPrice" formControlName="price" [(ngModel)]="proyect.price">
+  				</div>
+  			</div>
+  			<div class="form-group row mt-3">
+  				<label for="inputDB" class="col-sm-2 col-form-label">Database:</label>
+  				<div class="col-sm-10">
+  					<input type="text" name="database" class="form-control bg-transparent" style="color:white" id="inputDB" formControlName="database" [(ngModel)]="proyect.database">
+  				</div>
+  			</div>
+  			<div class="form-group row mt-3">
+  				<label for="inputRepo" class="col-sm-2 col-form-label">Repository:</label>
+  				<div class="col-sm-10">
+  					<input type="text" name="repository" class="form-control bg-transparent" style="color:white" id="inputRepo" formControlName="repository" [(ngModel)]="proyect.repository">
+  				</div>
+  			</div>
+  			<div class="form-group row mt-3">
+  				<label for="inputType" class="col-sm-2 col-form-label">Proyect Type:</label>
+  				<div class="col-sm-10">
+  					<input type="text" name="type" class="form-control bg-transparent" style="color:white" id="inputType" formControlName="type" [(ngModel)]="proyect.type">
+  				</div>
+  			</div>
+  			<div class="form-group row mt-3">
+  				<label for="inputDebt" class="col-sm-2 col-form-label">Debt:</label>
+  				<div class="col-sm-10">
+  					<input type="text" name="debt" class="form-control bg-transparent" style="color:white" id="inputDebt" formControlName="debt" [(ngModel)]="proyect.debt">
+  				</div>
+  			</div>
+  			<div class="form-group row mt-3">
+  				<label for="inputOrdDate" class="col-sm-2 col-form-label">Orderd Date:</label>
+  				<div class="col-sm-10">
+  					<input type="date" name="order_date" class="form-control bg-transparent" style="color:white" id="inputOrdDate" formControlName="order_date" [(ngModel)]="proyect.order_date">
+  				</div>
+  			</div>
+  			<div class="form-group row mt-3">
+  				<label for="inputDateFinish" class="col-sm-2 col-form-label">Date Finished:</label>
+  				<div class="col-sm-10">
+  					<input type="date" name="date_finished" class="form-control bg-transparent" style="color:white" id="inputDateFinish" formControlName="date_finished" [(ngModel)]="proyect.order_date_finished">
+  				</div>
+  			</div>
+  			<div class="form-group row mt-3">
+  				<label for="inputCustomer" class="col-sm-2 col-form-label">Customer Name:</label>
+  				<div class="col-sm-10">
+  					<input type="text" name="customer" class="form-control bg-transparent" style="color:white" id="inputCustomer" formControlName="customer" [(ngModel)]="proyect.customer">
+  				</div>
+  			</div>
+  			<div class="form-group row">
+  				<label for="inputWhtas" class="col-sm-2 col-form-label">Whats App:</label>
+  				<div class="col-sm-10">
+  					<input type="text" name="whats" class="form-control bg-transparent" style="color:white" id="inputWhtas" formControlName="whats" [(ngModel)]="proyect.whats">
+  				</div>
+  			</div>
+  		</form>
+  	</div>
+  </div>
+  <div class="modal-footer" style="background-color: black; color:white">
+    <button type="button" *ngIf="edit" class="btn btn-outline-dark" (click)="saveEdit(); modal.close('Save click')">Save</button>
+    <button type="button" class="btn btn-outline-warning" (click)="functionEdit()">Edit</button>
+  </div>
+</ng-template>
