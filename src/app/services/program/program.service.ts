@@ -21,4 +21,8 @@ export class ProgramService {
   editOrder(form:any){
     return this.http.post(API_URL + '/programs/orders/edit', form);
   }
+
+  createOrder(form:any){
+    return this.http.post(API_URL + '/programs/make/order', form);
+  }
 }
